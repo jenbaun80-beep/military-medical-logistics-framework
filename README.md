@@ -6,7 +6,7 @@ A starting point for modeling, acquiring, and cleaning logistics data that suppo
 
 - `docs/` - architecture and design notes
 - `schema/` - SQL definitions for the logistics data model
-- `scripts/` - data acquisition and cleaning utilities
+- `scripts/` - data acquisition, cleaning, analysis, and visualization utilities
 - `notebooks/` - exploratory analysis notebooks
 
 ## Getting started
@@ -30,4 +30,13 @@ Install the analysis dependencies and run the demonstration with:
 ```powershell
 pip install -r requirements.txt
 python scripts/statistical_analysis.py --mth330
+streamlit run scripts/visualization_dashboard.py
 ```
+
+The dashboard sidebar can also generate the ANA 230 executive command graphic with four panels: 30-day consumption, SPC anomaly bounds, category stock levels, and a seven-day demand projection. The PNG is saved to `docs/command_dashboard_sample.png`.
+
+## Executive Command Dashboard (ANA 230)
+
+The framework includes an automated visual telemetry engine in `scripts/visualization_dashboard.py`. It translates operational statistical anomalies, medical-category stock distribution, and seven-day predictive demand into an executive command dashboard.
+
+![Command Dashboard](docs/command_dashboard_sample.png)
