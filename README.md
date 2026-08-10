@@ -55,4 +55,10 @@ The dashboard sidebar can also generate the ANA 230 executive command graphic wi
 
 The framework includes an automated visual telemetry engine in `scripts/visualization_dashboard.py`. It translates operational statistical anomalies, medical-category stock distribution, and seven-day predictive demand into an executive command dashboard.
 
-![Command Dashboard](docs/command_dashboard_sample.png)
+## Project Visualization & Dashboard
+![Mock Supply Stock Visualization](docs/mock_supply_stock.png)
+
+## Dataset & Raw Logs
+You can inspect the raw and cleaned data files used in this project:
+- [View Raw Supply Data (CSV)](data/mock_supply_raw.csv)
+- [View Cleaned Audit-Ready Data (CSV)](data/mock_supply_cleaned.csv)
