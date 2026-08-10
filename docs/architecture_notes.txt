@@ -1,0 +1,20 @@
+Military Medical Logistics Framework
+====================================
+
+Purpose
+-------
+The framework separates source acquisition, normalization, and persistence so that raw observations remain traceable while downstream analysis uses consistent fields.
+
+Data flow
+---------
+1. Acquisition writes source files to data/raw/.
+2. Cleaning validates required identifiers, normalizes timestamps and quantities, and writes data/processed/.
+3. The SQL schema stores facilities, items, inventory snapshots, and shipments.
+4. Notebooks consume processed exports for exploratory analysis.
+
+Design boundaries
+-----------------
+- Raw files are immutable inputs and should not contain credentials.
+- Operational systems should supply a stable source_record_id for repeatable ingestion.
+- Sensitive operational details should be access-controlled outside this repository.
+- Database migrations should be applied in filename order.
