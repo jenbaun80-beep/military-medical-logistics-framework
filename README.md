@@ -15,7 +15,23 @@ A starting point for modeling, acquiring, and cleaning logistics data that suppo
 2. Apply `schema/01_create_logistics_tables.sql` to a MySQL database.
 3. Acquire a CSV with `python scripts/data_acquisition.py https://example.invalid/logistics.csv` and clean it with `python scripts/clean_data.py --input data/raw/logistics.csv --output data/processed/logistics_clean.csv`.
 
-The acquisition and cleaning scripts use the Python standard library. The statistical module requires the packages listed in `requirements.txt`.
+The acquisition script uses the Python standard library. The cleaning, statistical, and visualization modules use the packages listed in `requirements.txt`.
+
+## Data Preparation & Normalization Pipeline (ANA 330)
+
+The data preparation module, `scripts/clean_data.py`, processes raw telemetry and inventory feeds through an automated normalization pipeline:
+
+- **Identifier Normalization:** Strips whitespace and formatting artifacts from 13-digit National Stock Numbers (NSNs).
+- **Data Integrity and Imputation:** Handles missing or null stock levels and removes corrupted negative quantity entries.
+- **Date Parsing and Shelf-Life Rules:** Standardizes heterogeneous date formats and calculates dynamic operational risk flags: `CRITICAL_EXPIRED`, `EXPIRING_SOON`, and `HEALTHY`.
+
+The reusable `clean_operational_logistics_data()` function also returns `days_to_expiration` for downstream analysis.
+
+Run the included ANA 330 mock-feed demonstration with:
+
+```powershell
+python scripts/clean_data.py --demo
+```
 
 ## Applied Statistical Analysis (MTH 330)
 
